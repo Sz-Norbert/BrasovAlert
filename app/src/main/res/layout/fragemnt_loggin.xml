@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white"
+    tools:context=".ui.MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textFontWeight="700"
+        android:fontFamily="@font/inter_thin"
+        android:text="Auth"
+        android:layout_centerHorizontal="true"
+        android:lineHeight="30dp"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_below="@+id/textView"
+        android:layout_width="255dp"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Email"
+        android:background="@drawable/textbox"
+        android:ems="10"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/etPasword"
+        android:layout_width="255dp"
+        android:layout_height="37dp"
+        android:layout_below="@+id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textbox"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/etPasword"
+        android:text="Login"
+        android:backgroundTint="@color/login"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Register"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/register"
+        android:textSize="16sp" />
+
+
+</RelativeLayout>
