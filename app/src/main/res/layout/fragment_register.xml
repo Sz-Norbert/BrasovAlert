@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     android:layout_gravity="center_horizontal"
     android:background="@color/white"
     tools:context=".ui.MainActivity">
@@ -25,7 +26,6 @@
         android:id="@+id/etFirstName"
         android:layout_width="255dp"
         android:layout_height="37dp"
-        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:hint="FirstName"
         android:background="@drawable/textbox"
@@ -37,7 +37,6 @@
         android:id="@+id/etLastName"
         android:layout_width="255dp"
         android:layout_height="37dp"
-        android:layout_below="@+id/etFirstName"
         android:layout_centerHorizontal="true"
         android:hint="Last name"
         android:background="@drawable/textbox"
@@ -63,10 +62,9 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/etPasword"
+        android:id="@+id/et_password"
         android:layout_width="255dp"
         android:layout_height="37dp"
-        android:layout_below="@+id/etEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/textbox"
@@ -79,7 +77,6 @@
         android:id="@+id/etConfirmPassword"
         android:layout_width="255dp"
         android:layout_height="37dp"
-        android:layout_below="@+id/etPasword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/textbox"
@@ -93,11 +90,10 @@
         android:id="@+id/bt_register"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etConfirmPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:text="Register"
         android:textColor="@color/black"
         android:backgroundTint="@color/register"
         android:textSize="16sp" />
-</RelativeLayout>
+</LinearLayout>

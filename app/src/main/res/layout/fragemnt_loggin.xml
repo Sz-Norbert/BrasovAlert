@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     android:background="@color/white"
     tools:context=".ui.MainActivity">
 
@@ -22,7 +23,6 @@
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_below="@+id/textView"
         android:layout_width="255dp"
         android:layout_height="37dp"
         android:layout_centerHorizontal="true"
@@ -34,16 +34,15 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/etPasword"
+        android:id="@+id/et_password"
         android:layout_width="255dp"
         android:layout_height="37dp"
-        android:layout_below="@+id/etEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:padding="10dp"
         android:textStyle="bold" />
 
@@ -53,7 +52,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/etPasword"
         android:text="Login"
         android:backgroundTint="@color/login"
         android:textColor="@color/black"
@@ -63,7 +61,6 @@
         android:id="@+id/bt_register"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:text="Register"
@@ -72,4 +69,4 @@
         android:textSize="16sp" />
 
 
-</RelativeLayout>
+</LinearLayout>
