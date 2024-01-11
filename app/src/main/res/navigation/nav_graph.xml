@@ -27,5 +27,18 @@
         android:id="@+id/homeFragment"
         android:name="com.nika.brasovalert.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_createReportsFragment"
+            app:destination="@id/createReportsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment2"
+        android:name="com.nika.brasovalert.ui.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/createReportsFragment"
+        android:name="com.nika.brasovalert.ui.CreateReportsFragment"
+        android:label="CreateReportsFragment" />
 </navigation>

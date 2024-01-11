@@ -8,10 +8,10 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvReports"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp"
-        />
+        android:padding="15dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="74dp"
         android:clickable="true"
         android:foregroundGravity="bottom"
         android:src="@android:drawable/ic_menu_add" />

@@ -7,17 +7,19 @@ import androidx.lifecycle.viewModelScope
 import com.nika.brasovalert.db.UserEntity
 import com.nika.brasovalert.remote.AuthBody
 import com.nika.brasovalert.remote.AuthResponse
-import com.nika.brasovalert.repoitory.Repositroy
+import com.nika.brasovalert.repoitory.Repository
 import com.nika.brasovalert.repoitory.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoggingViewModel @Inject constructor(private val repository: Repositroy):ViewModel() {
+class LoggingViewModel @Inject constructor(private val repository: Repository):ViewModel() {
 
     private val _userDetail = MutableLiveData<AuthResponse?>()
     val userDetail : LiveData<AuthResponse?> = _userDetail
+
+
 
 
     fun authUser(user: AuthBody)=viewModelScope.launch {
@@ -32,5 +34,9 @@ class LoggingViewModel @Inject constructor(private val repository: Repositroy):V
 
     fun insertUser(user:UserEntity) = viewModelScope.launch {
         repository.insertUser(user)
+    }
+
+    fun getUser(){
+        repository.getUser()
     }
 }

@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.nika.brasovalert.api.AlertsApi
 import com.nika.brasovalert.db.UserDao
 import com.nika.brasovalert.db.UserDataBase
-import com.nika.brasovalert.repoitory.Repositroy
+import com.nika.brasovalert.repoitory.Repository
 import com.nika.brasovalert.util.Util.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -36,11 +36,10 @@ class Module {
 
 
     @Provides
-    @Singleton
     fun providePlayerDao(database:UserDataBase)=database.userDao()
 
     @Singleton
     @Provides
-    fun provideRepository(api : AlertsApi, userDao: UserDao)=Repositroy(api,userDao)
+    fun provideRepository(api : AlertsApi, userDao: UserDao)=Repository(api,userDao)
 
 }
