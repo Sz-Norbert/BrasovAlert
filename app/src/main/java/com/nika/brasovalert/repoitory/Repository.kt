@@ -1,6 +1,7 @@
 package com.nika.brasovalert.repoitory
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.nika.brasovalert.api.AlertsApi
 import com.nika.brasovalert.db.UserDao
 import com.nika.brasovalert.db.UserEntity
@@ -14,7 +15,6 @@ import com.nika.brasovalert.remote.ReportResponse
 import okhttp3.MultipartBody
 
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 
 import retrofit2.Response
 import java.lang.Exception
@@ -22,9 +22,33 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(private val alertApi: AlertsApi, private val userDao: UserDao) {
 
+
+    private val _isLogged = MutableLiveData<Boolean>()
+    val isLogged: LiveData<Boolean> get() = _isLogged
+
+
+    val _emailLiveData =MutableLiveData<String>()
+    val emailLiveData:LiveData<String> = _emailLiveData
+
+
+    init {
+        _isLogged.postValue(false)
+    }
+    fun setEmail(email:String){
+        _emailLiveData.value=email;
+    }
+
+
     suspend fun registerUser(user: RegisterBody): Resource<RegisterResponse> {
         return safeCall { alertApi.register(user) }
     }
+
+
+        fun setIsLogged(logged: Boolean) {
+
+            _isLogged.postValue(logged)
+        }
+
 
     suspend fun createReport(createReportbody: CreateReportBody): Resource<CreateReportResponse> {
         val nameRequestBody = createPartFromString("name", createReportbody.name)
@@ -50,8 +74,8 @@ class Repository @Inject constructor(private val alertApi: AlertsApi, private va
         userDao.upsertUser(user)
     }
 
-    fun getUser(): LiveData<UserEntity>{
-        return userDao.getUser()
+    fun getUser(userEmail: String): LiveData<UserEntity>{
+        return userDao.getUser(userEmail)
     }
 
     suspend fun authUser(user : AuthBody):Resource<AuthResponse>{

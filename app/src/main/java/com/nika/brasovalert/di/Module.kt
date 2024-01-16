@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.nika.brasovalert.api.AlertsApi
 import com.nika.brasovalert.db.UserDao
 import com.nika.brasovalert.db.UserDataBase
+import com.nika.brasovalert.mvvm.MainViewModel
 import com.nika.brasovalert.repoitory.Repository
 import com.nika.brasovalert.util.Util.Companion.BASE_URL
 import dagger.Module
@@ -41,5 +42,10 @@ class Module {
     @Singleton
     @Provides
     fun provideRepository(api : AlertsApi, userDao: UserDao)=Repository(api,userDao)
+
+    @Provides
+    fun provideMainViewModel(repository: Repository): MainViewModel {
+        return MainViewModel(repository)
+    }
 
 }

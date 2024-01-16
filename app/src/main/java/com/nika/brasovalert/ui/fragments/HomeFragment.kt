@@ -1,13 +1,19 @@
-package com.nika.brasovalert.ui
+package com.nika.brasovalert.ui.fragments
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nika.brasovalert.R
 import com.nika.brasovalert.adapter.ReportsAdapter
@@ -19,11 +25,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    val vm by viewModels<HomefragmentViewModel>()
-    lateinit var binding : FragmentHomeBinding
-    lateinit var token : String
+   private val vm by viewModels<HomefragmentViewModel>()
+
+  private  lateinit var binding : FragmentHomeBinding
+   private lateinit var token : String
     private lateinit var reportsAdapter:ReportsAdapter
 
+    val logged=false
 
 
 
@@ -38,13 +46,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_createReportsFragment)
-        }
 
-        observeUser()
-        observeReports()
+
+
+
+
+
+
+        observeEmail()
     }
+
+    private fun observeEmail() {
+        vm.emailLivedata.observe(viewLifecycleOwner, Observer {email->
+            Toast.makeText(requireContext(), "$email", Toast.LENGTH_SHORT).show()
+            observeUser(email)
+
+            binding.floatingActionButton.setOnClickListener {
+                val directions=HomeFragmentDirections.actionHomeFragmentToCreateReportsFragment(email)
+                findNavController().navigate(directions)
+
+
+            }
+        })
+
+
+    }
+
 
     private fun observeReports() {
 
@@ -58,11 +85,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         })
     }
 
-    fun observeUser(){
-        vm.userLiveData.observe(viewLifecycleOwner, Observer {
+    fun observeUser(email:String){
+        vm.getUserDetail(email).observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 token = "Bearer ${it.token}"
                 vm.getReports(token)
+                observeReports()
             }
         })
     }
@@ -77,6 +105,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             adapter=reportsAdapter
         }
     }
+
+
+
 
 
 }

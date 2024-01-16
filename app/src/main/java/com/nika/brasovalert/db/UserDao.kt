@@ -11,7 +11,7 @@ interface  UserDao {
     @Upsert
     suspend fun upsertUser(user: UserEntity)
 
-    @Query("SELECT *  FROM user")
-    fun getUser():LiveData<UserEntity>
+    @Query("SELECT * FROM user WHERE email = :userEmail")
+    fun getUser(userEmail: String):LiveData<UserEntity>
 
 }

@@ -41,7 +41,7 @@
         android:layout_width="94dp"
         android:layout_height="87dp"
         android:layout_below="@id/etOras"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:src="@android:drawable/ic_menu_gallery"
         app:layout_constraintEnd_toEndOf="@+id/etOras"
         app:layout_constraintHorizontal_bias="0.428"

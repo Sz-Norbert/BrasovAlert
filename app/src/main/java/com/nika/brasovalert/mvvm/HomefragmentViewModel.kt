@@ -18,7 +18,8 @@ class HomefragmentViewModel @Inject constructor(val repository: Repository):View
 
     val _reoportsLiveData  = MutableLiveData<ReportResponse?>()
     val reortsLiveData : LiveData<ReportResponse?> =_reoportsLiveData
-    val userLiveData: LiveData<UserEntity> = repository.getUser()
+    val emailLivedata=repository.emailLiveData
+
     fun getReports(token:String)=viewModelScope.launch{
         val resource= repository.getReports(token)
         if  (resource is Resource.Success && resource.data!=null){
@@ -27,6 +28,12 @@ class HomefragmentViewModel @Inject constructor(val repository: Repository):View
             _reoportsLiveData.value=null
         }
 
+    }
+
+
+
+    fun getUserDetail(email:String):LiveData<UserEntity>{
+        return repository.getUser(email)
     }
 
 }

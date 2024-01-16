@@ -22,10 +22,17 @@ class LoggingViewModel @Inject constructor(private val repository: Repository):V
 
 
 
+
+
+
     fun authUser(user: AuthBody)=viewModelScope.launch {
         val resource = repository.authUser(user)
         if (resource is Resource.Success && resource.data != null) {
             _userDetail.value=resource.data!!
+
+            repository.setIsLogged(true)
+            repository.setEmail(resource.data.data.email)
+
         }else{
             _userDetail.value=null
 
@@ -36,7 +43,5 @@ class LoggingViewModel @Inject constructor(private val repository: Repository):V
         repository.insertUser(user)
     }
 
-    fun getUser(){
-        repository.getUser()
-    }
+
 }

@@ -13,17 +13,21 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 @HiltViewModel
-class CreateReportViewModel @Inject constructor (val repository: Repository):ViewModel() {
+class CreateReportViewModel @Inject constructor (private val repository: Repository):ViewModel() {
 
 
 
-    val userLiveData: LiveData<UserEntity> = repository.getUser()
-    val _reportResponseLiveData = MutableLiveData<Resource<CreateReportResponse>> ()
+
+   private val _reportResponseLiveData = MutableLiveData<Resource<CreateReportResponse>> ()
     val reportResponseLiveData :LiveData<Resource<CreateReportResponse>> =_reportResponseLiveData
 
 
     fun postReport(createReportBody: CreateReportBody)=viewModelScope.launch {
        val resource = repository.createReport(createReportBody)
         _reportResponseLiveData.value=resource
+    }
+
+    fun getUserDetail(email:String):LiveData<UserEntity>{
+       return repository.getUser(email)
     }
 }

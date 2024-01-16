@@ -1,4 +1,4 @@
-package com.nika.brasovalert.ui
+package com.nika.brasovalert.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

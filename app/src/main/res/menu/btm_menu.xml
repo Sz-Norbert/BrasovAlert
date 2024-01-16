@@ -6,10 +6,9 @@
         android:title="Home"
         android:icon="@drawable/home_ic"
         />
-
     <item
-        android:id="@+id/favoritesFragment2"
-        android:title="Favorites"
-        android:icon="@drawable/heart"
+        android:id="@+id/logginFragment3"
+        android:title="Logout"
+        android:icon="@drawable/arrow_back_24"
         />
 </menu>

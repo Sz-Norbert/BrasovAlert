@@ -1,4 +1,4 @@
-package com.nika.brasovalert.ui
+package com.nika.brasovalert.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -36,7 +36,6 @@ class LogginFragment():Fragment(R.layout.fragemnt_loggin) {
             val password=binding.etPassword.text.toString()
             val user = AuthBody(email,password)
             vm.authUser(user)
-
         }
     }
 
@@ -59,10 +58,9 @@ class LogginFragment():Fragment(R.layout.fragemnt_loggin) {
     private fun observeUser(){
         vm.userDetail.observe(viewLifecycleOwner, Observer {
             if (it!=null){
-                val user = UserEntity(it.data.token, it.data.firstName,it.data.lastName,it.data.email)
+                val user = UserEntity(0,it.data.token, it.data.firstName,it.data.lastName,it.data.email)
                 vm.insertUser(user)
-                Toast.makeText(requireContext(), "successful logged", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_logginFragment3_to_homeFragment)
+
             }
             else{
                 Toast.makeText(requireContext(), "no user found", Toast.LENGTH_SHORT).show()
